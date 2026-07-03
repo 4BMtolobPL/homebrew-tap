@@ -1,7 +1,6 @@
 class Kommit < Formula
   desc "CLI tool using AI to generate Conventional Commits from Git diffs"
   homepage "https://github.com/4BMtolobPL/kommit"
-  version "0.1.3"
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.3/kommit-aarch64-apple-darwin.tar.xz"
     sha256 "bceeaa74f026df494f41e58fef9954abd0e03cf9a33667ae51a374c399b21202"
