@@ -1,6 +1,6 @@
 cask "khannel" do
-  version "1.0.0"
-  sha256 "c8b7e204a1a919823749abd7d87433e86c47d79d417a7d9394fe7bd953694338"
+  version "1.0.1"
+  sha256 "5bb31d8da9e2efa93ae25505894e295dd36f25c09f6066a39b8e2e0fd7c604c6"
 
   url "https://github.com/4BMtolobPL/khannel/releases/download/v#{version}/khannel-#{version}-macos-arm64.dmg"
   name "khannel"
