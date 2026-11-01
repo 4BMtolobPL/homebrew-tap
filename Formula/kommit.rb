@@ -1,24 +1,19 @@
 class Kommit < Formula
   desc "CLI tool using AI to generate Conventional Commits from Git diffs"
   homepage "https://github.com/4BMtolobPL/kommit"
-  if OS.mac?
-    if Hardware::CPU.arm?
-      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.4/kommit-aarch64-apple-darwin.tar.xz"
-      sha256 "23fe361cb833dbe7e1fd8cbde68847a54e16c83e3f9d5ab638f8ab191d865a03"
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.4/kommit-x86_64-apple-darwin.tar.xz"
-      sha256 "56c2d91cfb64222636f740c00835a650dc88ce701a3cdc4c25a822ad02f29e93"
-    end
+  version "0.1.5"
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.5/kommit-aarch64-apple-darwin.tar.xz"
+    sha256 "7d19bae10fd4dca40112a645499209406b300bd76a89a0e2a9baf6c33843f857"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.4/kommit-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "e3376a684eda71845c7f42415d922dbab9baed7af296a5c5135c741723d22381"
+      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.5/kommit-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "3bde45594f142cc6e2d09e337919297558ecc3687e17920b7c0576407b341ffc"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.4/kommit-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "5c18965232f4369fae75342f9b360e7499a3efec66156f44982f5882433bb126"
+      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.5/kommit-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "c96ae691cf8301f8c413a66a584fc6b0c8b313f3ac1ba8cf556fcd5d1214acfd"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
@@ -26,7 +21,6 @@ class Kommit < Formula
   BINARY_ALIASES = {
     "aarch64-apple-darwin":      {},
     "aarch64-unknown-linux-gnu": {},
-    "x86_64-apple-darwin":       {},
     "x86_64-unknown-linux-gnu":  {},
   }.freeze
 
@@ -46,10 +40,15 @@ class Kommit < Formula
   end
 
   def install
-    bin.install "kommit" if OS.mac? && Hardware::CPU.arm?
-    bin.install "kommit" if OS.mac? && Hardware::CPU.intel?
-    bin.install "kommit" if OS.linux? && Hardware::CPU.arm?
-    bin.install "kommit" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "kommit"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "kommit"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "kommit"
+    end
 
     install_binary_aliases!
 
