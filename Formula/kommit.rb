@@ -1,19 +1,19 @@
 class Kommit < Formula
   desc "CLI tool using AI to generate Conventional Commits from Git diffs"
   homepage "https://github.com/4BMtolobPL/kommit"
-  version "0.1.5"
+  version "0.2.0"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.5/kommit-aarch64-apple-darwin.tar.xz"
-    sha256 "7d19bae10fd4dca40112a645499209406b300bd76a89a0e2a9baf6c33843f857"
+    url "https://github.com/4BMtolobPL/kommit/releases/download/v0.2.0/kommit-aarch64-apple-darwin.tar.xz"
+    sha256 "4da5ed9238c8637ce6cc98c02687656ed0db1db945d96243b5b2c312d7af1191"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.5/kommit-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "3bde45594f142cc6e2d09e337919297558ecc3687e17920b7c0576407b341ffc"
+      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.2.0/kommit-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "4ece3e6583e05c251d25131b27a101f36248a58f6359a78ca96dd9071677aa3c"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.1.5/kommit-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "c96ae691cf8301f8c413a66a584fc6b0c8b313f3ac1ba8cf556fcd5d1214acfd"
+      url "https://github.com/4BMtolobPL/kommit/releases/download/v0.2.0/kommit-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "d3df95f24c3f5e70a99aabd6da201a327464b07ba9cc5d7bc88205ef09c31ab6"
     end
   end
   license any_of: ["MIT", "Apache-2.0"]
