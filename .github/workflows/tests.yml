@@ -6,6 +6,8 @@ on:
     branches:
       - main
   pull_request:
+  # Dispatched by fix-kommit-formula.yml after it patches the formula.
+  workflow_dispatch:
 
 permissions: {}
 
@@ -15,6 +17,9 @@ defaults:
 
 jobs:
   test-bot:
+    # cargo-dist's raw formula push always fails tap-syntax; the patched commit
+    # from fix-kommit-formula.yml is tested via workflow_dispatch instead.
+    if: github.event_name != 'push' || github.event.head_commit.author.name != 'axo bot'
     strategy:
       matrix:
         os: [ macos-26 ]

@@ -1,7 +1,6 @@
 class Kommit < Formula
   desc "CLI tool using AI to generate Conventional Commits from Git diffs"
   homepage "https://github.com/4BMtolobPL/kommit"
-  version "0.2.0"
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/4BMtolobPL/kommit/releases/download/v0.2.0/kommit-aarch64-apple-darwin.tar.xz"
     sha256 "4da5ed9238c8637ce6cc98c02687656ed0db1db945d96243b5b2c312d7af1191"
@@ -59,5 +58,9 @@ class Kommit < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/kommit --version")
   end
 end
