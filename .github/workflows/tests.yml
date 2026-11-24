@@ -39,7 +39,12 @@ jobs:
 
       - run: brew test-bot --only-setup
 
-      - run: brew test-bot --only-tap-syntax
+      # Equivalent to `brew test-bot --only-tap-syntax`, but skips
+      # Homebrew/SingleUseMethod, which the cargo-dist generated formula violates.
+      # Revert to `brew test-bot --only-tap-syntax` once cargo-dist fixes its template.
+      - run: brew style --except-cops=Homebrew/SingleUseMethod 4bmtolobpl/tap
+      - run: brew readall --aliases --os=all --arch=all 4bmtolobpl/tap
+      - run: brew audit --except=installed --tap=4bmtolobpl/tap
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
